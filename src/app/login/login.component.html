@@ -1,0 +1,23 @@
+<app-menu></app-menu>
+<div class="main">
+    <div class="login-tela">
+        <h1 class="titulos">Entrar</h1>
+        <hr class="linha-titulo">
+        <br>
+        <form [formGroup]="formLogin" (ngSubmit)="submit()">
+            <input class="form-login" id="email" type="email" placeholder="E-mail" formControlName="email" /> <br>
+            <input class="form-login" id="senha" type="password" placeholder="Senha" formControlName="senha" /> <br>
+            <div><a class="link" href="#">Esqueci minha senha</a></div> <br>
+            <button class="main-button" type="submit">Entrar</button>
+        </form>
+    </div>
+    <div class="login-tela">
+        <h1 class="titulos">Cadastre-se</h1>
+        <hr class="linha-titulo">
+        <br>
+        <form (ngSubmit)="submit()">
+            <input class="form-login" type="email" placeholder="E-mail" /> <br>
+            <button class="main-button" type="submit">Cadastre-se</button>
+        </form>
+    </div>
+</div>
