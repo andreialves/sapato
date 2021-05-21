@@ -1,0 +1,73 @@
+
+.login-tela {
+    width: 50%;
+    margin-top: 100px;
+    text-align: center;
+}
+
+.main-button {
+    font-family: Verdana, sans-serif;
+    font-size: 16px;
+    color: #FFF;
+    border: none;
+    background-color: #e94c21;
+    width: 400px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.main-button:hover {
+    background-color: #f7896b !important;
+}
+
+.main {
+    display: flex;
+    width: 100%;
+}
+
+.titulos {
+    margin: 0px;
+    font-family: FreeMono, sans-serif;
+    color: #e94c21;
+}
+
+.form-login {
+    border-radius: 5px;
+    margin-bottom: 35px;
+    width: 363px;
+    height: 40px;
+    border: none;
+    border: 1px solid black;
+    padding-left: 30px;
+    font-family: FreeMono, sans-serif;
+}
+
+.form-login::placeholder{
+    font-family: FreeMono, sans-serif;
+    color: rgb(116, 116, 116);
+}
+
+.form-login:focus{
+    border: 1px solid #e94c21;
+}
+
+.form-login:focus-visible{
+    outline: 0px;
+}
+
+
+.linha-titulo {
+    margin: 0 auto;
+    width: 30%;
+    border: none;
+    height: 1px;
+    background-color: #000;
+    margin-bottom: 50px;
+}
+
+.link {
+    color: #e94c21;
+    font-family: FreeMono, sans-serif;
+}
+
+
