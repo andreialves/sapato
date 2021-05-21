@@ -1,12 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "ca8330c8-d335-4faa-a316-2904117de161"
+    "analytics": "bf8be185-0780-42bf-a0b9-9018d1b9e174"
   },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "front-end": {
+    "font-end": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/front-end",
+            "outputPath": "dist/font-end",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -68,18 +68,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "front-end:build"
+            "browserTarget": "font-end:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "front-end:build:production"
+              "browserTarget": "font-end:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "front-end:build"
+            "browserTarget": "font-end:build"
           }
         },
         "test": {
@@ -116,16 +116,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "front-end:serve"
+            "devServerTarget": "font-end:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "front-end:serve:production"
+              "devServerTarget": "font-end:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "front-end"
+  "defaultProject": "font-end"
 }
