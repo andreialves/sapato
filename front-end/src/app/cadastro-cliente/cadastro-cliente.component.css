@@ -1,0 +1,47 @@
+
+@import url(../style.css);
+
+.cadastro {
+    width: 100%;
+    margin: 100px 200px;
+    padding: 80px;
+    border: 1px solid black;
+}
+
+.form {
+    border-radius: 5px;
+    margin-bottom: 10px;
+    height: 40px;
+    border: none;
+    border: 1px solid black;
+    padding-left: 30px;
+    font-family: FreeMono, sans-serif;
+}
+
+.full {
+    width: 100%;
+}
+
+.form-33 {
+    width: 30%;
+    margin-right: 10px;
+}
+
+.form-50 {
+    width: 46%;
+    margin-right: 10px;
+}
+
+.form::placeholder{
+    font-family: FreeMono, sans-serif;
+    color: rgb(116, 116, 116);
+}
+
+.form:focus{
+    border: 1px solid #e94c21;
+}
+
+.form:focus-visible{
+    outline: 0px;
+}
+

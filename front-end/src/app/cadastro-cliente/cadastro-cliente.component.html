@@ -1,0 +1,47 @@
+<app-menu></app-menu>
+
+<div class="main">
+    <div class="cadastro">
+        <h1 class="titulos">Cadastro</h1>
+        <hr class="linha-titulo">
+
+        <form [formGroup]="formCadastro" (ngSubmit)="submit()">
+            <input class="form full" type="text" placeholder="Nome Completo"> <br>
+            
+            <span class="form-33">Data de Nascimento: <input type="date"> </span>
+            <input class="form form-33" type="text" placeholder="CPF">
+            <span class="form-33" style="margin-left: 0px;">
+                <input type="radio" name="genero">
+                <label for="M">Masculino</label>
+                <input type="radio" name="genero">
+                <label for="F">Feminino</label>
+                <input type="radio" name="genero">
+                <label for="O">Outro</label>
+            </span>
+            <br>
+            <input class="form form-33" type="email" placeholder="E-mail">
+            <input class="form form-33" type="password" placeholder="Senha">
+            <input class="form form-33" type="password" placeholder="Confirmação de Senha">
+            <br>
+            <input class="form full" type="text" placeholder="Rua">
+            <br>
+            <input class="form full" type="text" placeholder="Cidade">
+            <br>
+            <input class="form form-33" type="text" placeholder="CEP">
+            <input class="form form-33" type="text" placeholder="Estado">
+            <input class="form form-33" type="text" placeholder="Número">
+            <br>
+            <input class="form form-50" type="text" placeholder="Bairro">
+            <input class="form form-50" type="text" placeholder="Complemento">
+            <br>
+            <input class="form form-50" type="text" placeholder="Celular">
+            <input class="form form-50" type="text" placeholder="Telefone">
+            <br>
+
+            <div style="text-align: center; margin-top: 35px;">
+                <button class="main-button">Cadastrar</button>
+            </div>
+        </form>
+    </div>
+
+</div>
