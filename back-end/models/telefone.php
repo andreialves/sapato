@@ -1,5 +1,6 @@
 <?php
-    class Telefone(){
+
+    class Telefone {
         private $idTelefone;
         private $telefone;
 
