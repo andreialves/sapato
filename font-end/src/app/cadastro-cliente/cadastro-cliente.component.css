@@ -19,16 +19,16 @@
 }
 
 .full {
-    width: 100%;
+    width: 95.5%;
 }
 
 .form-33 {
-    width: 30%;
+    width: 29%;
     margin-right: 10px;
 }
 
 .form-50 {
-    width: 46%;
+    width: 45.5%;
     margin-right: 10px;
 }
 
@@ -45,3 +45,10 @@
     outline: 0px;
 }
 
+.titulo {
+    border: 1px solid black;
+    width: 35%;
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 40px;
+}

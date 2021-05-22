@@ -3,7 +3,7 @@
 <div class="main">
     <div class="cadastro">
         <h1 class="titulos">Cadastro</h1>
-        <hr class="linha-titulo">
+        <hr class="titulo">
 
         <form [formGroup]="formCadastro" (ngSubmit)="submit()">
             <input class="form full" type="text" placeholder="Nome Completo"> <br>
@@ -19,9 +19,11 @@
                 <label for="O">Outro</label>
             </span>
             <br>
-            <input class="form form-33" type="email" placeholder="E-mail">
-            <input class="form form-33" type="password" placeholder="Senha">
-            <input class="form form-33" type="password" placeholder="Confirmação de Senha">
+            <div style="width: 100%;">
+                <input class="form form-33" type="email" placeholder="E-mail">
+                <input class="form form-33" type="password" placeholder="Senha">
+                <input class="form form-33" type="password" placeholder="Confirmação de Senha">
+            </div>  
             <br>
             <input class="form full" type="text" placeholder="Rua">
             <br>

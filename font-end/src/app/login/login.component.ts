@@ -12,11 +12,17 @@ export class LoginComponent implements OnInit {
     email: '',
     senha: ''
   });
+
+  formCadastro = this.formBuilder.group({
+    emailCadastro: ''
+  });
+
   constructor(
     private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
+
   }
 
   submit(){
