@@ -1,6 +1,5 @@
 <?php
 
-    include('../db.php');
 
     class Endereco {
         private $idEndereco;
@@ -75,6 +74,7 @@
         public function __construct(){
 
         }
+
 
     }
 

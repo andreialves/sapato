@@ -52,18 +52,5 @@
 
     }
 
-    $calcadoNovo = new Calcado();
     
-
-    $query = "SELECT * FROM ADMINISTRADOR;";
-
-    $resultado = pg_query($calcadoNovo->getDB()->conecta(), $query);
-
-    $nColunas = pg_fetch_all($resultado, PGSQL_ASSOC);
-
-    foreach($nColunas as $value){
-        echo $value['idadministrador']."<br>";
-        echo $value['usuario']."<br>";
-    }
-
 ?>

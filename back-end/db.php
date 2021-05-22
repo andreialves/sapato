@@ -12,8 +12,8 @@
         }
 
         public function desconecta() {
-            if ($conexao){
-                pg_close($conexao);
+            if ($this->conexao){
+                pg_close($this->conexao);
             }else {
                 die ("Conexão não estabelecida!");
             }

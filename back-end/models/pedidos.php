@@ -1,7 +1,4 @@
 <?php
-    include('../db.php');
-    include('endereco.php');
-    include('cliente.php');
 
     class Pedidos {
         private $idPedido;

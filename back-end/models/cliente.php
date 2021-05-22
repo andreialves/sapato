@@ -1,7 +1,10 @@
 <?php
+
+    include('../showErrors.php');
     include('telefone.php');
     include('endereco.php');
     include('pedidos.php');
+    include('../db.php');
     
     class Cliente {
         private $idCliente;
@@ -13,9 +16,11 @@
         private $listaEndereco;
         private $listaPedidos;
         private $listaTelefone;
+        private $senha;
 
         public function __construct(){
             $this->enderecoPrincipal = new Endereco();
+            $this->db = new Db();
             $this->listaEndereco = array();
             $this->listaPedidos = array();
             $this->listaTelefone = array();
@@ -57,6 +62,10 @@
             return $this->listaTelefone;
         }
 
+        public function getSenha(){
+            return $this->senha;
+        }
+
         public function setNome($nome){
             $this->nome = $nome;
         }
@@ -89,6 +98,60 @@
             $this->listaTelefone = $listaTelefone;
         }
 
+        public function setSenha($senha){
+            $this->senha = $senha;
+        }
+
+        public function insere(){
+
+            $query = "INSERT INTO cliente (nome, sexo, email, cpf, senha) VALUES ('{$this->nome}', '{$this->sexo}', '{$this->email}', '{$this->cpf}', '{$this->senha}');";
+            echo $query;
+            $resultado = pg_query($this->db->conecta(), $query) or die();
+            
+            $query = "SELECT idcliente FROM cliente WHERE email='{$this->email}' AND cpf='{$this->cpf}';";
+            
+            $resultado = pg_query($this->db->conecta(), $query) or die();
+
+            $nColunas = pg_fetch_all($resultado, PGSQL_ASSOC);
+
+            if (sizeof($nColunas) == 1)
+                foreach($nColunas as $value){
+                    $this->idCliente = $value['idcliente'];
+                }
+
+            $this->db->desconecta();
+        }
+
+        public function login(){
+            $query = "SELECT idCliente FROM CLIENTE WHERE senha='{$this->senha}' AND email='{$this->email}';";
+            $resultado = pg_query($this->db->conecta(), $query) or die();
+            $nColunas = pg_fetch_all($resultado, PGSQL_ASSOC);
+
+            foreach($nColunas as $value){
+                echo $value['idcliente']."<br>";
+            }
+            $this->db->desconecta();
+        }
+        
+        public function insereEnderecoPrincipal(){
+            if ($this->enderecoPrincipal){
+                if($this->idCliente != null){
+                    $query = "INSERT INTO endereco (rua, cidade, cep, estado, complemento, bairro, numero, clienteidcliente)".
+                             " VALUES ('{$this->enderecoPrincipal->getRua()}', '{$this->enderecoPrincipal->getCidade()}', '{$this->enderecoPrincipal->getCep()}',".
+                             " '{$this->enderecoPrincipal->getEstado()}', '{$this->enderecoPrincipal->getComplemento()}', '{$this->enderecoPrincipal->getBairro()}',".
+                             " '{$this->enderecoPrincipal->getNumero()}', '{$this->idCliente}');";
+                    
+                    $resultado = pg_query($this->db->conecta(), $query) or die();
+
+                    $this->db->desconecta();
+                    array_push($this->listaEndereco, $this->enderecoPrincipal);
+                }
+            }
+        }
+
+        public function insereTelefone(){
+
+        }
 
     }
 
