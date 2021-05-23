@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl } from '@angular/forms';
 import { ServiceService } from '../service.service';
 
 
@@ -13,13 +13,13 @@ import { ServiceService } from '../service.service';
 export class CadastroClienteComponent implements OnInit {
   @Output() cadastroEvent = new EventEmitter<boolean>();
 
-
+  generoRadio = '';
+  
   formCadastro = this.formBuilder.group({
     nome: '',
-    data: '',
     cpf: '',
-    genero: '',
-    email: '',
+    genero: new FormControl(),
+    email: this.service.getEmail() !== '' ? this.service.getEmail() : '',
     senha: '',
     rua: '',
     cidade: '',
@@ -43,20 +43,19 @@ export class CadastroClienteComponent implements OnInit {
   }
 
   mudaGenero(){
-    console.log();  
+    console.log("Oi");  
     //this.formCadastro.value.genero = genero;
 
   }
 
-  pegaEmail(){
-    return this.service.getEmail();
-  }
+  
 
   validaFormBuilder(){
     if ((
       this.formCadastro.value.nome !== "" &&
-      this.formCadastro.value.data !== "" &&
       this.formCadastro.value.cpf !== "" &&
+      this.formCadastro.value.genero !== "" &&
+      this.formCadastro.value.email !== "" &&
       this.formCadastro.value.senha !== "" &&
       this.formCadastro.value.rua !== "" &&
       this.formCadastro.value.cidade !== "" &&
@@ -69,8 +68,9 @@ export class CadastroClienteComponent implements OnInit {
       this.formCadastro.value.telefone !== "" )
       &&
       (this.formCadastro.value.nome  !== undefined &&
-      this.formCadastro.value.data  !== undefined &&
       this.formCadastro.value.cpf  !== undefined &&
+      this.formCadastro.value.genero !== undefined &&
+      this.formCadastro.value.email !== undefined &&
       this.formCadastro.value.senha  !== undefined &&
       this.formCadastro.value.rua  !== undefined &&
       this.formCadastro.value.cidade  !== undefined &&
@@ -88,8 +88,30 @@ export class CadastroClienteComponent implements OnInit {
 
   cadastro(){
       if (this.validaFormBuilder()){
-        console.log(this.formCadastro.value);
-        this.cadastroEvent.emit(false);
+        this.service.cadastro(this.formCadastro.value.nome,
+          this.formCadastro.value.cpf,
+          this.formCadastro.value.genero,
+          this.formCadastro.value.email,
+          this.formCadastro.value.senha,
+          this.formCadastro.value.rua,
+          this.formCadastro.value.cidade,
+          this.formCadastro.value.cep,
+          this.formCadastro.value.estado,
+          this.formCadastro.value.numero,
+          this.formCadastro.value.bairro,
+          this.formCadastro.value.complemento,
+          this.formCadastro.value.celular,
+          this.formCadastro.value.telefone)
+          .subscribe(res => {
+
+            if(res.id){
+              alert("Usuário cadastrado com sucesso! Seu id é: "+res.id);
+              this.cadastroEvent.emit(false);
+            }else{
+              alert("Usuário não cadastrado");
+            }
+          });
+        
       }else {
         alert("Preencha todos os campos");
       }

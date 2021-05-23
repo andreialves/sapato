@@ -8,19 +8,18 @@
         <form [formGroup]="formCadastro" (ngSubmit)="cadastro()">
             <input class="form full" type="text" placeholder="Nome Completo" formControlName="nome" required> <br>
             
-            <span class="form-33">Data de Nascimento: <input type="date" formControlName="data" required> </span>
-            <input class="form form-33" type="text" placeholder="CPF" formControlName="cpf" required>
-            <span class="form-33" style="margin-left: 0px;">
-                <input type="radio" name="genero">
+            <input class="form form-50" type="text" placeholder="CPF" maxlength=11 formControlName="cpf" required>
+            <span class="form-50">
+                <input type="radio" formControlName="genero" value="F">
+                <label>Feminino</label>
+                <input type="radio" formControlName="genero" value="M">
                 <label>Masculino</label>
-                <input type="radio" name="genero">
-                <label for="F">Feminino</label>
-                <input type="radio" name="genero">
-                <label for="O">Outro</label>
+                <input type="radio" formControlName="genero" value="O">
+                <label>Outro</label>
             </span>
             <br>
             <div style="width: 100%;">
-                <input class="form form-50" [value]=pegaEmail() type="email" placeholder="E-mail" required>
+                <input class="form form-50" type="email" placeholder="E-mail" formControlName="email" required>
                 <input class="form form-50" type="password" placeholder="Senha" formControlName="senha" required>
             </div>  
             <br>
@@ -35,8 +34,8 @@
             <input class="form form-50" type="text" placeholder="Bairro" formControlName="bairro" required>
             <input class="form form-50" type="text" placeholder="Complemento" formControlName="complemento" required>
             <br>
-            <input class="form form-50" type="text" placeholder="Celular" formControlName="celular" required>
-            <input class="form form-50" type="text" placeholder="Telefone" formControlName="telefone" required>
+            <input class="form form-50" type="text" placeholder="Celular" maxlength=11 formControlName="celular" required>
+            <input class="form form-50" type="text" placeholder="Telefone" maxlength=11 formControlName="telefone" required>
             <br>
 
             <div style="text-align: center; margin-top: 35px;">

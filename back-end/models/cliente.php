@@ -102,10 +102,15 @@
             $this->senha = $senha;
         }
 
+        public function setTelefone($telefone){
+            $t = new Telefone();
+            $t->setTelefone($telefone->getTelefone());
+            array_push($this->listaTelefone, $t);
+        }
+
         public function insere(){
 
             $query = "INSERT INTO cliente (nome, sexo, email, cpf, senha) VALUES ('{$this->nome}', '{$this->sexo}', '{$this->email}', '{$this->cpf}', '{$this->senha}');";
-            echo $query;
             $resultado = pg_query($this->db->conecta(), $query) or die();
             
             $query = "SELECT idcliente FROM cliente WHERE email='{$this->email}' AND cpf='{$this->cpf}';";
@@ -152,7 +157,13 @@
         }
 
         public function insereTelefone(){
-
+            if (count($this->listaTelefone) != 0)
+                if($this->idCliente != null){
+                    foreach($this->listaTelefone as $value)
+                        $query = "INSERT INTO telefone (clienteidcliente, telefone) VALUES ('{$this->idCliente}',".
+                        " '{$value->getTelefone()}');";
+                        $resultado = pg_query($this->db->conecta(), $query);
+                }
         }
 
     }

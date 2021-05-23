@@ -28,6 +28,16 @@ export class ServiceService {
         email: e,
         senha: s
     }
-    return this.http.get<any>([url,"login", e, s].join('/'));
+    return this.http.get<any>([url, "login", e, s].join('/'));
+  }
+
+  cadastro (nome: string, cpf: string, genero: string, email: string,
+            senha: string, rua: string, cidade: string, cep: string, uf: string, numero: string,
+            bairro: string, complemento: string, celular: string, telefone: string
+           ): Observable<any>{
+
+    return this.http.get<any>([url, "cadastro", nome, cpf, genero, email,
+                              senha, rua, cidade, cep, uf, numero,
+                              bairro, complemento, celular, telefone].join('/'));
   }
 }
