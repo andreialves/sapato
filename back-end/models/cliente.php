@@ -126,11 +126,13 @@
             $query = "SELECT idCliente FROM CLIENTE WHERE senha='{$this->senha}' AND email='{$this->email}';";
             $resultado = pg_query($this->db->conecta(), $query) or die();
             $nColunas = pg_fetch_all($resultado, PGSQL_ASSOC);
-
+            $id = "";
             foreach($nColunas as $value){
-                echo $value['idcliente']."<br>";
+                $id = $value['idcliente'];
             }
             $this->db->desconecta();
+
+            return $id;
         }
         
         public function insereEnderecoPrincipal(){

@@ -5,9 +5,9 @@
         <hr class="linha-titulo">
         <br>
         <form [formGroup]="formLogin" (ngSubmit)="submit()">
-            <input class="form-login" id="email" type="email" placeholder="E-mail" formControlName="email" /> <br>
-            <input class="form-login" id="senha" type="password" placeholder="Senha" formControlName="senha" /> <br>
-            <div><a class="link" href="#">Esqueci minha senha</a></div> <br>
+            <input class="form-login" id="email" type="email" placeholder="E-mail" formControlName="email"  required /> <br>
+            <input class="form-login" id="senha" type="password" placeholder="Senha" formControlName="senha"  required /> <br>
+            <div><a class="link" href=#>Esqueci minha senha</a></div> <br>
             <button class="main-button" type="submit">Entrar</button>
         </form>
     </div>
@@ -16,8 +16,8 @@
         <hr class="linha-titulo">
         <br>
         <form [formGroup]="formCadastro" (ngSubmit)="cadastro()">
-            <input class="form-login" type="email" placeholder="E-mail" formControlName="emailCadastro" /> <br>
-            <button routerLink="/cadastro-cliente" class="main-button" type="submit">Cadastre-se</button>
+            <input class="form-login" type="email" placeholder="E-mail" formControlName="emailCadastro"  required /> <br>
+            <button class="main-button" type="submit">Cadastre-se</button>
         </form>
     </div>
 </div>

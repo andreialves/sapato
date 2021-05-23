@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { CadastroClienteComponent } from './cadastro-cliente/cadastro-cliente.component'
 
 @Component({
@@ -6,6 +6,14 @@ import { CadastroClienteComponent } from './cadastro-cliente/cadastro-cliente.co
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
-  title = 'sapato';
+
+    cadastro: boolean = false;
+
+    cadastros(cad:boolean){
+      this.cadastro = cad;
+    }
+  
 }
+

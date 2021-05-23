@@ -1,1 +1,4 @@
+<app-login *ngIf="!cadastro" (cadastroEvent)="cadastros($event)" ></app-login>
+<app-cadastro-cliente *ngIf="cadastro" (cadastroEvent)="cadastros($event)"></app-cadastro-cliente>
+
 <router-outlet></router-outlet>

@@ -5,14 +5,14 @@
         <h1 class="titulos">Cadastro</h1>
         <hr class="titulo">
 
-        <form [formGroup]="formCadastro" (ngSubmit)="submit()">
-            <input class="form full" type="text" placeholder="Nome Completo"> <br>
+        <form [formGroup]="formCadastro" (ngSubmit)="cadastro()">
+            <input class="form full" type="text" placeholder="Nome Completo" formControlName="nome" required> <br>
             
-            <span class="form-33">Data de Nascimento: <input type="date"> </span>
-            <input class="form form-33" type="text" placeholder="CPF">
+            <span class="form-33">Data de Nascimento: <input type="date" formControlName="data" required> </span>
+            <input class="form form-33" type="text" placeholder="CPF" formControlName="cpf" required>
             <span class="form-33" style="margin-left: 0px;">
                 <input type="radio" name="genero">
-                <label for="M">Masculino</label>
+                <label>Masculino</label>
                 <input type="radio" name="genero">
                 <label for="F">Feminino</label>
                 <input type="radio" name="genero">
@@ -20,24 +20,23 @@
             </span>
             <br>
             <div style="width: 100%;">
-                <input class="form form-33" type="email" placeholder="E-mail">
-                <input class="form form-33" type="password" placeholder="Senha">
-                <input class="form form-33" type="password" placeholder="Confirmação de Senha">
+                <input class="form form-50" [value]=pegaEmail() type="email" placeholder="E-mail" required>
+                <input class="form form-50" type="password" placeholder="Senha" formControlName="senha" required>
             </div>  
             <br>
-            <input class="form full" type="text" placeholder="Rua">
+            <input class="form full" type="text" placeholder="Rua" formControlName="rua" required>
             <br>
-            <input class="form full" type="text" placeholder="Cidade">
+            <input class="form full" type="text" placeholder="Cidade" formControlName="cidade" required>
             <br>
-            <input class="form form-33" type="text" placeholder="CEP">
-            <input class="form form-33" type="text" placeholder="Estado">
-            <input class="form form-33" type="text" placeholder="Número">
+            <input class="form form-33" type="text" placeholder="CEP" maxlength=8 formControlName="cep" required>
+            <input class="form form-33" type="text" placeholder="UF" maxlength=2 formControlName="estado" required>
+            <input class="form form-33" type="text" placeholder="Número" formControlName="numero" required>
             <br>
-            <input class="form form-50" type="text" placeholder="Bairro">
-            <input class="form form-50" type="text" placeholder="Complemento">
+            <input class="form form-50" type="text" placeholder="Bairro" formControlName="bairro" required>
+            <input class="form form-50" type="text" placeholder="Complemento" formControlName="complemento" required>
             <br>
-            <input class="form form-50" type="text" placeholder="Celular">
-            <input class="form form-50" type="text" placeholder="Telefone">
+            <input class="form form-50" type="text" placeholder="Celular" formControlName="celular" required>
+            <input class="form form-50" type="text" placeholder="Telefone" formControlName="telefone" required>
             <br>
 
             <div style="text-align: center; margin-top: 35px;">
