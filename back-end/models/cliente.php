@@ -1,6 +1,5 @@
 <?php
 
-    //include('../showErrors.php');
     include('telefone.php');
     include('endereco.php');
     include('pedidos.php');
