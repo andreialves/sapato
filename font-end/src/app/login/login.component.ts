@@ -38,10 +38,14 @@ export class LoginComponent implements OnInit {
     console.log(this.formLogin.value);
     if (this.formLogin.value.email !== "" && this.formLogin.value.senha !== ""){
         this.service.login(this.formLogin.value.email, this.formLogin.value.senha).subscribe(res => {
-          if (res.id)
-            alert("Usuário com id " + res.id + " logado com sucesso!");
-          else {
-            alert("Login falhou");
+          if (res.status == "sucesso"){
+            if (res.id)
+              alert("Usuário com id " + res.id + " " + res.mensagem);
+            else {
+              alert("Login falhou");
+            }
+          } else if (res.status == "erro"){
+            alert(res.mensagem);
           }
         });
     }else{

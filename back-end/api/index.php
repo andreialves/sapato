@@ -13,8 +13,8 @@
                 $cliente = new Cliente();
                 $cliente->setEmail($url[1]);
                 $cliente->setSenha($url[2]);
-                $usuario = array ("id" => $cliente->login());
-                echo json_encode($usuario);
+                $cliente->login();
+                echo json_encode($cliente->login());
                 //echo json_encode($cliente->login());
             }
             if ($url[0] == 'cadastro'){
@@ -35,7 +35,7 @@
                 $endereco->setComplemento($url[12]);
                 $cliente->setEnderecoPrincipal($endereco);
 
-                $cliente->insere();
+                echo json_encode($cliente->insere());
                 $cliente->insereEnderecoPrincipal();
 
                 $telefone = new Telefone();
@@ -48,7 +48,7 @@
                 $cliente->insereTelefone();
 
                 $usuario = array ("id" => "1");
-                echo json_encode($usuario);
+                
             }
         }
         

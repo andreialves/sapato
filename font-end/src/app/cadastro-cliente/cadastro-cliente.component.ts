@@ -103,12 +103,15 @@ export class CadastroClienteComponent implements OnInit {
           this.formCadastro.value.celular,
           this.formCadastro.value.telefone)
           .subscribe(res => {
-
-            if(res.id){
-              alert("Usuário cadastrado com sucesso! Seu id é: "+res.id);
-              this.cadastroEvent.emit(false);
-            }else{
-              alert("Usuário não cadastrado");
+            if (res.status == "sucesso"){
+              if(res.id){
+                alert(res.mensagem + " Seu id é: " + res.id);
+                this.cadastroEvent.emit(false);
+              }else{
+                alert(res.mensagem);
+              }
+            }else if (res.status == "erro"){
+              alert(res.mensagem);
             }
           });
         

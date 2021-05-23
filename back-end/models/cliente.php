@@ -1,6 +1,6 @@
 <?php
 
-    include('../showErrors.php');
+    //include('../showErrors.php');
     include('telefone.php');
     include('endereco.php');
     include('pedidos.php');
@@ -109,7 +109,7 @@
         }
 
         public function insere(){
-
+            $retorno = array("status" => "erro", "mensagem" => "Falha no cadastro!");
             $query = "INSERT INTO cliente (nome, sexo, email, cpf, senha) VALUES ('{$this->nome}', '{$this->sexo}', '{$this->email}', '{$this->cpf}', '{$this->senha}');";
             $resultado = pg_query($this->db->conecta(), $query) or die();
             
@@ -118,26 +118,35 @@
             $resultado = pg_query($this->db->conecta(), $query) or die();
 
             $nColunas = pg_fetch_all($resultado, PGSQL_ASSOC);
-
+            
             if (sizeof($nColunas) == 1)
                 foreach($nColunas as $value){
                     $this->idCliente = $value['idcliente'];
+                    $retorno["status"] = "sucesso";
+                    $retorno["mensagem"] = "Cadastrado com sucesso!";
+                    $retorno["id"] = $value['idcliente'];
                 }
 
             $this->db->desconecta();
+
+            return $retorno;
         }
 
         public function login(){
             $query = "SELECT idCliente FROM CLIENTE WHERE senha='{$this->senha}' AND email='{$this->email}';";
             $resultado = pg_query($this->db->conecta(), $query) or die();
             $nColunas = pg_fetch_all($resultado, PGSQL_ASSOC);
-            $id = "";
+            $retorno = array("status" => "erro", "mensagem" => "Falha no login!");
             foreach($nColunas as $value){
-                $id = $value['idcliente'];
+                
+                $retorno["status"] = "sucesso";
+                $retorno["mensagem"] = "Logado com sucesso!";
+                $retorno["id"] = $value['idcliente'];
+
             }
             $this->db->desconecta();
 
-            return $id;
+            return $retorno;
         }
         
         public function insereEnderecoPrincipal(){
